@@ -1,0 +1,12 @@
+FROM linux_build
+
+RUN groupadd -g 9999 vsuser && \
+    useradd -r -u 9999 -g vsuser vsuser
+
+RUN apt-get update
+RUN apt-get --only-upgrade install code && \
+    apt-get install code
+
+RUN apt-get install -f -y cmake 
+
+RUN mkdir /home/vsuser
